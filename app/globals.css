@@ -128,6 +128,6 @@
     @apply font-sans;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-wide; /* Sets Lora as your default header font */
+    @apply  font-sans tracking-wide; /* Sets Lora as your default header font */
   }
 }

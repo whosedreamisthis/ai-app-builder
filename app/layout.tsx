@@ -3,6 +3,7 @@ import { Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -32,18 +33,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <body className={`${lora.variable} ${dmSans.variable} `}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <main>{children}</main>
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          // This maps Clerk's base typography to your Tailwind theme's DM Sans font
+          fontFamily: "var(--font-sans)",
+        },
+        elements: {
+          // If you want specific headings inside the modal to use your Lora serif font:
+          cardBox: "font-sans",
+          headerTitle: "font-serif tracking-wide text-2xl",
+          formButtonPrimary: "font-sans font-medium",
+        },
+      }}
+    >
+      <html suppressHydrationWarning lang="en">
+        <body className={`${lora.variable} ${dmSans.variable} `}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <main>{children}</main>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
