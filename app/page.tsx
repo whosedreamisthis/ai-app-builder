@@ -2,7 +2,12 @@ import { Badge } from "@/components/ui/badge";
 import { HoleBackground } from "@/components/animate-ui/components/backgrounds/hole";
 import { BlueTitle, GrayTitle } from "@/components/reusables";
 
-import PromptBox from "@/components/prompt-box";
+import PromptBox from "../components/home/prompt-box";
+import BrowserMockup from "../components/home/browser-mockup";
+import HowItWorks from "@/components/home/how-it-works";
+import CallToAction from "@/components/home/call-to-action";
+import Pricing from "@/components/home/pricing";
+import Features from "@/components/home/features";
 
 export default function Home() {
   return (
@@ -38,6 +43,11 @@ export default function Home() {
           No credit card required . 10 free generations on sign up
         </p>
       </section>
+      <BrowserMockup />
+      <Features />
+      <HowItWorks />
+      <Pricing />
+      <CallToAction />
     </main>
   );
 }

@@ -33,7 +33,7 @@ export const SectionHeading = ({
   blue,
 }: {
   gray: string;
-  blue: boolean;
+  blue: string;
 }) => {
   return (
     <h2 className="font-serif text-[clamp(2rem,4vh,3rem)] leading-[1.1] tracking-tight">
